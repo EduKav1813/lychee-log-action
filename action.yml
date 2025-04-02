@@ -21,6 +21,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: TEST STEP 123
+      id: test-step
+      run: echo TEST STEP 123
+      shell: bash
+
     - name: Link Checker
       id: lychee
       uses: lycheeverse/lychee-action@v1.9.3
@@ -34,6 +39,7 @@ runs:
       with:
         repository: 3mdeb/lychee-log-parser
         path: lychee-log-parser
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Parsing Lychee Log
       run: |
         lychee-log-parser/src/lychee_log_parser.py ${{ inputs.parser_args }} || { cat github_job_summary.md > "${GITHUB_STEP_SUMMARY}"; exit 1; }
