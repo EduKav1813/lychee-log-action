@@ -21,6 +21,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: TEST STEP 123
+      id: test-step
+      run: echo TEST STEP 123
+      shell: bash
+
     - name: Link Checker
       id: lychee
       uses: lycheeverse/lychee-action@v1.9.3
